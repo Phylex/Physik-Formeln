@@ -1,0 +1,355 @@
+\documentclass[8pt,a4paper]{extarticle}
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage[
+	pdftitle={Physik Formeln}
+	pdfauthor={Alexander Becker}
+	pdfkeywords={Quantenmechanik,Klassische Mechanik,Mathematik,Physik}
+	pdfsubject={Formelsammlung Physik}
+]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{refcards}
+\usepackage{vmargin}
+
+\setpapersize[landscape]{A4}
+\setmarginsrb{1.5cm}{1.0cm}{1.5cm}{1.0cm}{0ex}{0ex}{0ex}{0ex}%left,top,right,bottom,header height, header sep.,footer hight, footer sep.
+\setlength\columnsep{7mm}
+
+%##############################################################################
+% Command abbreviations for Physics
+\newcommand{\frml}[2]{$#1$~\hfill~#2\\}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\tder}[2]{\frac{\mathrm d #1}{\mathrm d #2}}
+\newcommand{\pderc}[3]{\left(\frac{\partial#1}{\partial#2}\right)_{#3}}
+\newcommand{\pderb}[3]{\left{}\frac{\partial#1}{\partial#2}\right|_{#3}}
+\newcommand{\totd}[1]{\mathrm{d}#1}
+\newcommand{\unitv}[1]{\vec{\mathbf{e}}_{#1}}
+\newcommand{\komut}[2]{\left[#1,#2 \right]}
+\newcommand{\antikomut}[2]{\left\{#1,#2\right\}}
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\oper}[1]{\hat#1}
+\newcommand{\bra}[1]{\left\langle#1\right|}           % \bra{X}  ->  <X|
+\newcommand{\braket}[2]                               % \braket{X}{Y}  ->  <X|Y>
+{\left\langle#1 \middle| #2\right\rangle}
+\newcommand{\bratenket}[3]                            % \bratenket{X}{Y}{Z}  ->
+{\left\langle#1 \middle| #2 \middle|  % <X|Y|Z>
+#3\right\rangle}
+\newcommand{\anglemean}[1]                            % \anglemean{X}  ->  <X>
+{\left\langle #1 \right\rangle}                       % \norm{X}  ->  || X ||
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\updownarrows}                            % \ket\updownarrows  ->
+{\text{\rotatebox[origin=c]{90}{$\rightleftarrows$}}} % |↑↓> (cmt is utf8!)
+\newcommand{\downuparrows}                            % \ket\updownarrows  ->
+{\text{\rotatebox[origin=c]{270}{$\rightleftarrows$}}}% |↓↑>
+\newcommand{\neswarrows}                              % \ket\neswarrows  ->
+{\text{\rotatebox[origin=c]{45}{$\rightleftarrows$}}} % |↗↙>
+\newcommand{\swnearrows}                              % \ket\swnearrows  ->
+{\text{\rotatebox[origin=c]{225}{$\rightleftarrows$}}}% |↙↗>
+\newcommand{\cre}{c^\dagger}                          % annihalation operator
+\newcommand{\anh}{c^{\vphantom{\dagger}}}             % creation operator
+\newcommand{\numb}{n^{\vphantom{\dagger}}}            % number operator
+\newcommand{\stat}[1]{\mathrm{#1}}
+\newcommand{\statvar}[1]{\mathbf{#1}}
+%##############################################################################
+
+\begin{document}
+\raggedright
+\begin{multicols}{3}
+\title{Physikalische Formeln}
+\section{Koordinatensysteme}
+\subsection{Kugelkoordinaten}
+\frml{x = r\cdot\sin(\theta)\cos(\varphi)}{}
+\frml{y = r\cdot\sin(\theta)\sin(\varphi)}{}
+\frml{z = r\cdot\cos(\theta)}{}
+\frml{r = \sqrt{x^2+y^2+z^2}}{}
+\frml{J = \frac{\partial(x,y,z)}{\partial(r,\theta\varphi)} =
+	\begin{pmatrix}
+		\sin(\theta)\cos(\varphi) & r\cos(\theta)\sin(\varphi) & -r\sin(\theta)\sin(\varphi) \\
+		\sin(\theta)\sin(\varphi) & r\cos(\theta)\sin(\varphi) &  r\sin(\theta)\cos(\varphi) \\
+		\cos(\theta) & -r\sin(\theta) & 0
+	\end{pmatrix}
+}{}
+\frml{\left| J \right| = \mathbf{det}(J) = r^2\cdot\sin(\theta)}{}
+\frml{\iiint_{r,\varphi,\theta}f(r,\varphi,\theta)r^2\sin(\theta)\mathrm{d}r\mathrm{d}\varphi\mathrm{d}\theta}{Integral \"uber den Raum}
+\frml{\nabla = \unitv{r}\pder{}{r}+\unitv{\theta}\frac{1}{r}\pder{}{\theta}+\unitv{\varphi}\frac{1}{r\sin(\theta)}\pder{}{\varphi}}{Gradient}
+\frml{\nabla \cdot \mathbf{A} = \frac{1}{r^2}\pder{}{r}(r^2A_r)+\frac{1}{r\sin(\theta)}\pder{}{\theta}(\sin(\theta)A_\theta)+\frac{1}{r\sin(\theta)}\pder{}{\varphi}A_\varphi}{Divergenz}
+\frml{\nabla \times \mathbf{A} = \frac{1}{r\sin(\theta)}\left(\pder{}{\theta}(A_\varphi\sin(\theta))-\pder{A_\theta}{\varphi}\right)\unitv{r}+\frac{1}{r}\left(\frac{1}{\sin(\theta)}\pder{A_r}{\varphi}-\pder{}{r}\left(rA_r\right)\right)\unitv{\theta}+\frac{1}{r}\left(\pder{}{r}\left(rA_\theta\right)-\pder{A_r}{\theta}\right)\unitv{\varphi}}{Rotation}
+\subsection{Zylinderkoordinaten}
+\frml{x = r\cos(\varphi)}{}
+\frml{y = r\sin(\varphi)}{}
+\frml{z = z}{}
+\frml{r = \sqrt{x^2+y^2}}{}
+\frml{J = \pder{(x,y,z)}{(r,\varphi,z)} =
+	\begin{pmatrix}
+		\cos(\varphi) & -r\sin(\varphi) & 0 \\
+		\sin(\varphi) & r\cos(\varphi) & 0 \\
+		0 & 0 & 1
+	\end{pmatrix}
+	}{}
+\frml{\left|J\right| = \mathbf{det}(J) = r}{}
+\frml{\iiint_{r,\varphi,z}f(r,\varphi,z)r\mathrm{d}r\mathrm{d}\varphi\mathrm{d}z}{Integral \"uber den Raum}
+\frml{\nabla = \unitv{r}\pder{}{r}+\frac{1}{r}\pder{}{\varphi}\unitv{\varphi}+\pder{}{z}\unitv{z}}{Gradient}
+\frml{\nabla\cdot\vec{A}=\frac{1}{r}\pder{}{r}(r\cdot A_r)+\frac{1}{r}\pder{A_\varphi}{\varphi}+\pder{A_z}{z}}{}
+\frml{\nabla\times\vec{A}=\left(\frac{1}{r}\pder{A_z}{\varphi}-\pder{A_\varphi}{z}\right)\unitv{r}+\left(\pder{A_r}{z}-\pder{A_z}{r}\right)\unitv{\varphi}+\frac{1}{r}\left(\pder{}{r}(rA_r)-\pder{A_r}{\varphi}\right)\unitv{z}}{}
+\section{Mathematisches}
+\subsection{Trigonometrische Identit\"aten}
+\frml{\sin^2(x)+\cos^2(x) = 1}{}
+\frml{a^2 = b^2+c^2 -2bc\cos(\alpha)}{Kosinussatz}
+\frml{\sin(2x) = 2\sin(x)\cos(x) = \frac{2\tan(x)}{1+\tan^2(x)}}{Doppelwinkel}
+\frml{\sin(x\pm y) = \sin(x)\cos(y)\pm\cos(x)\sin(y)}{Additionstheoreme}
+\frml{\cos(x\pm y) = \cos(x)\cos(y)\mp\sin(x)\sin(y)}{}
+\frml{\sin(x/2)=\pm\sqrt{1/2(1-\cos(x))}}{Halber Winkel}
+\frml{\cos(x/2)=\pm\sqrt{1/2(1+\cos(x))}}{}
+\frml{\sin(x)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}x^{2n+1}}{Reihenentwicklune}
+\frml{\cos(x)=\sum_{n=1}^\infty\frac{(-1)^n}{(2n)!}x^{2n}}{}
+\frml{\sin(x)=\frac{e^{ix}-e^{-ix}}{2i}}{Exponentialdarstellung}
+\frml{\cos(x)=\frac{e^{ix}+e^{-ix}}{2}}{}
+\frml{\lim_{x\ll1}{\sin(x)}\approx x-\frac{x^3}{6}+\frac{x^5}{120}}{}
+\frml{\lim_{x\ll1}{\cos(x)}\approx1-\frac{x^2}{2}+\frac{x^4}{24}-\frac{x^6}{720}}{}
+\subsection{Hyperbolische Funktionen}
+\frml{\cosh^2(x)-sinh^2(x)=1}{}
+\frml{\cosh(x)\pm\sinh(x)=e^{\pm x}}{}
+\frml{\sinh(x\pm y)=\sinh(x)\cosh(y)\pm\cosh(x)\sinh(y)}{Additionstheorem}
+\frml{\cosh(x\pm y)=\cosh(x)\cosh(y)\pm \sinh(x)\sinh(y)}{}
+\frml{\sinh(2x)=2\sinh(x)\cosh(x)}{Doppelter Winkel}
+\frml{\cosh(2x)=\cosh^2(x)+\sinh^2(x)}{}
+\frml{\sinh^2(x)=\frac{1}{2}(\cosh(2x)-1)}{Quadrate}
+\frml{\cosh^2(x)=\frac{1}{2}(\cosh(2x)+1)}{}
+\subsection{Index-geschiebe}
+\frml{\vec{r}\times\vec{y} = \sum_{i,j,k = 1}^3\epsilon_{ijk}x_{i}j_{k}}{}
+\frml{\vec{r}\cdot\vec{y} = \sum_{i=1}^3x_{i}y_{i}}{}
+\frml{\sum_{i=1}^3\varepsilon_{ijk}\varepsilon_{ilm} = \delta_{jl}\delta{km} - \delta_{jm}\delta{kl}}{}
+\frml{(\vec{r}\times\vec{y})(\vec{v}\times\vec{w}) = \sum_{i,j,k=1}^3\varepsilon_{ijk}x_jy_k\varepsilon_{ilm}v_lw_m}{}
+\subsection{Ableitungsregeln}
+\frml{\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}=:f'(x_0)}{Differentierbarkeit}
+Ableitungsregeln (Seien f, g und h differentierbare Funktionen der gleichen Variable)\\
+\frml{(f+g)'=f'+g'\text{  }; (cf)'=c\cdot f'}{Linearit\"at (c = konst)}
+\frml{(f\cdot g)'=f'\cdot g +f\cdot g'}{Produktregel}
+\frml{(f/g)'=\frac{f'\cdot g-f\cdot g'}{g^2}}{Quotientenregel}
+\frml{(f(g(x)))'=f'(g(x))\cdot g'(x)}{Kettenregel}
+\frml{\tder{f}{x}=\tder{f}{g}\tder{g}{x}}{}
+\frml{\frac{f'(\xi)}{g'(\xi)}=\frac{f(b)-f(a)}{g(b)-g(a)}}{Mittelwertensatz}
+\frml{Tf(x;a)=\sum_{n=0}^\infty\frac{f^(n)(a)}{n!}\cdot (x-a)^n}{Taylorreihenwicklung}
+\frml{\lim_{x\to x_0}\frac{f(x)}{g(x)}=\lim_{x\to x_0}\frac{f'(x)}{g'(x)}}{Satz von l'Hospital}
+\frml{\tder{}{x}x^n = n\cdot x^{n-1}}{Differentiation f\"r Polynome}
+\subsection{Integrationstechniken}
+\frml{\int f(x)\mathrm{d}x}{Unbestimmtes Integral}
+\frml{\int_a^b f(x)\mathrm{d}x}{Bestimmtes Integral}
+\frml{\int (f(x)\pm g(x))\mathrm{d}x = \int f(x)\mathrm{d}x \pm \int g(x)\mathrm{d}x}{Linearit\"at des Integrals}
+\frml{\int a\cdot f(x)\mathrm{d}x = a\cdot \int f(x)\mathrm{d}x}{}
+\frml{\int_a^b f(x)\mathrm{d}x = F(b)-F(a)}{1. Hauptsatz}
+\frml{\int_a^b f(x)\cdot g(x) \mathrm{d}x = f(\xi)\cdot \int_a^b g(x)\mathrm{d}x}{Mittelwertsatz}
+\frml{\int f(x) \mathrm{d}x = \int f(g(t))g'(t)\mathrm{d}t, \text{Subst.:} x= g(t), \mathrm{d}x = g'(t)\mathrm{d}t}{}
+\frml{\int_a^b f(h(x))h'(x)\mathrm{d}x = \int_{h(a)}^{h(b)}f(t)\mathrm{d}t \text{Subst.:} h(x)=t; h'(x)\mathrm{d}x = \mathrm{d}t }{}
+\frml{\int_a^b f'(x)g(x)\mathrm{d}x = f(x) \cdot g(x)|_a^b - \int_a^b f(x)\cdot g'(x)\mathrm{d}x}{}
+\subsection{Sph\"arische Funktionen}
+\frml{Y_{l,m}(\theta, \phi)= \sqrt{\frac{(2l+1)(l-m)!}{4\pi(l+m)!}}P_{l}^{m}(\cos(\theta)\cdot e^{im\phi})}{Kugelfl\"achenfunktion}
+\frml{P_{l}^{m}(x)= \frac{(-1)^m}{2^l\cdot l!}\cdot(1-x)^{\frac{m}{2}}\cdot\frac{\mathrm{d}^{l+m}}{\mathrm{d}x^{l+m}}(x^2-1)^l}{zug. Legendrepol.}
+\frml{\int_0^{2\pi}\int_{-1}^{1} Y^*_{l,m}Y_{l',m'} \mathrm{d}\cos(\theta)\mathrm{d}\varphi = \delta_{l,l'}\delta_{m,m'}}{Orthogonalit\"at}
+\subsection{Implizierte Funktionen}
+\frml{G(x, f(x)) = 0}{Implizite Form der Funktion f}
+\subsection{Funktionaldeterminanten}
+Hier nimmt man an, dass alle Funktionen hinreichend umkehrbar und Glatt sind.\\
+\frml{det \pder{(u,v)}{(x,y)} = det \begin{pmatrix}
+		\pderb{u}{x}{y} & \pderb{u}{y}{x} \\
+		\pderb{v}{x}{y} & \pderb{v}{y}{x}
+	\end{pmatrix}
+}{}
+\frml{\pder{(u,y)}{(x,y)} = \pderb{u}{x}{y}}{}
+\frml{\pder{(x,v)}{(x,y)} = \pderb{v}{y}{x}}{}
+\frml{\pder{(u,v)}{(x,y)} = -\pder{(v,u)}{(x,y)} = -\pder{(u,v)}{(y,x)}}{}
+\frml{\pder{(u,v)}{(x,y)} = \pder{(u,v)}{(s,t)}\pder{(s,t)}{(x,y)} = \pder{(u,v)}{(s,t)}/\pder{(x,y)}{(s,t)}}{}
+\section{Lineare Algebra}
+\subsection{Vectormathematik}
+\frml{\vec{a}\times(\vec{b}\times\vec{c}) = \vec{b}(\vec{a}\cdot\vec{c})-\vec{c}(\vec{a}\cdot\vec{b})}{BACCAB-Regel}
+\frml{\vec{a}(\vec{b}\times\vec{c}) = V }{Spatprodukt}
+\section{Statistik}
+Definitionen \\
+\frml{\mathbf{X}}{Zufallsvariable}
+\frml{\text{x}}{Einzelnes Ergebnis einer Messung (stat. verteilt)}
+\frml{\text{e}}{M\"ogliches Ergebnis einer Messreihe}
+\frml{\mathbf{E}}{Ergebnismenge einer Messreihe}
+\frml{\omega(\stat{x})}{Wahrscheinlichkeitsverteilung von x}
+\frml{\sum_{i=1}^N P(\stat{x}_i)=1;\text{ }\int_{-\infty}^\infty \omega(\stat{x}) \mathrm{dx} = 1}{Normierung}
+\frml{\sum_{i=1}^N \stat{x}\cdot P(\stat{x})/N=\langle\statvar{X}\rangle\text{; }\int_{-\infty}^\infty \omega(\stat{x})\stat{x} \mathrm{dx}=\langle\statvar{X}\rangle}{}
+\frml{\sqrt{\frac{1}{N-1}\sum_{j=1}^N(x_j-\langle\statvar{X}\rangle)}}{Standardabweichung}
+\frml{\langle F(\statvar{X})\rangle = \int_{-\infty}^\infty F(\statvar{X})\omega(\stat{x})\mathrm{dx}}{}
+\frml{\mu_n = \langle\statvar{X}\rangle}{n-tes Moment}
+\frml{(\Delta x)^2 = \langle\statvar{X}^2\rangle-\langle\statvar{X}\rangle^2 = \langle(\statvar{X}-\langle\statvar{X}\rangle)^2\rangle}{Schwankung}
+\frml{\Xi(\stat{k}) = \int_{-\infty}^\infty e^{ikx} \omega(\stat{x})\mathrm{d}\stat{x}}{Charakteristische Fkt.}
+\frml{\Xi(\stat{k}) = \sum_n \frac{(-ik)^n}{n!}\langle\statvar{X}\rangle}{}
+\frml{\omega_F(\stat{f}) = \langle\delta(F(\statvar{X})-\stat{f})\rangle}{Wahrscheinlichkeitsdichte der F Werte}
+Statistik mit mehreren Zufallsvariablen \\
+\frml{\vec{\statvar{X}} = (\statvar{X}_1,\statvar{X}_2, ..., \statvar{X}_n)}{}
+\frml{\vec{\stat{x}} = (\stat{x}_1, \stat{x}_2, \stat{x}_3,..., \stat{x}_n)}{}
+Die obigen definitionen k\"onnen auf diese Vektoren erweitert werden zudem gilt\\
+\frml{K_{ij} = \langle(\statvar{X}_i-\langle\statvar{X}_i\rangle)(\statvar{X}_j-\langle\statvar{X}_j\rangle)\rangle}{Korrelationsmatrix}
+\frml{\begin{pmatrix}n \\ k\\ \end{pmatrix} = \frac{n!}{k!\cdot(n-k)!}}{Binomialkoeffizient}
+\frml{\ln(n!) \approx n\ln(n)-n}{Stirlingformel f\"ur gro{\ss}e N}
+\frml{n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n}{}
+\section{Fehlerrechnung}
+Ein Wert mit fehler wird durch $y = (\overline{y}\pm\Delta y)$ der Mittelweg der Statistik wird hier als $\overline{x}$ geschrieben\\
+Es gibt 4 verschiedene Fehlerquellen\\
+\begin{itemize}
+	\item Systematischer Fehler
+	\item Messger\"atefehler
+	\item Zuf\"alliger Fehler
+	\item Fehler des Mathematischen Modells
+\end{itemize}
+\frml{u = \frac{1}{\sqrt{N}}\cdot s}{Unsicherheit}
+\frml{y(x+ \Delta x)= y(x)+\frac{1}{1!}\tder{y(x)}{x}\cdot\Delta x+\frac{1}{2!}\tder{^2y(x)}{x^2}\cdot(\Delta x)^2+...}{}
+\frml{y = c\cdot x \implies \Delta y = c \cdot \Delta x ; \frac{\Delta y}{y} = \frac{\Delta x}{x}}{Lineare Fehler}
+\frml{y = y(x_1,x_2,...)\implies \Delta y = \pder{y}{x_1}\cdot\Delta x_1 + \pder{y}{x_2}\cdot\Delta x_2+...}{}
+Falls nur die Fehlergrenzen bekannt sind so kann noch der Betrag der Unsicherheit angegeben werden.\\
+\frml{\Delta y = \left|\pder{y}{x_1}\right|\cdot \Delta x_1+\left|\pder{y}{x_2}\right|\cdot \Delta x_2 + ...}{}
+\frml{ u_y=\sqrt{\left(\pder{y}{x_1}\cdot u_1\right)^2+\left(\pder{y}{x_2}\cdot u_2\right)^2+...}}{}
+Bei korrelierten gr\"ossen, muss der Einfluss der Fehler aufeinander ber\"ucksichtigt werden.\\
+\frml{u_y = \sqrt{\sum_{i=1}^m(\pder{y}{x_i}\cdot u_i)^2+2\sum_{i=1}^{m-1}\sum_{k=i+1}^{m}\pder{y}{x_i}\pder{y}{x_k}\cdot u(x_1,x_k)}}{}
+\section{Elektrodynamik}
+\frml{\nabla\cdot\vec{B}=0}{1. Maxwell-Gleichung}
+\frml{\nabla\cdot\vec{E}=\frac{\varrho}{\varepsilon_0}}{2. Maxwell-Gleichung}
+\frml{\nabla\times\vec{B}-\mu_0\varepsilon_0\pder{\vec{E}}{t} =0}{3. Maxwell-Gleichung}
+\frml{\nabla\times\vec{E}+\pder{\vec{B}}{t}=0}{4. Maxwell-Gleichung}
+\section{Relativistik}
+\subsection{Schreibweise}
+\frml{x^\mu = \begin{pmatrix} x^0 \\ x^1 \\ x^2 \\ x^3 \end{pmatrix} = \begin{pmatrix} ct \\ x \\ y \\ z \end{pmatrix}}{Kontravarianter Vektor}
+\frml{g_{\mu \nu} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}}{Metrischer Tensor}
+\frml{x_\mu = g_{\mu\nu} x^\nu = \begin{pmatrix} ct & -x & -y & -z \end{pmatrix}}{Kovarianter Vektor}
+\frml{p^\mu = \frac{1}{\sqrt{1-(v^2/c^2)}}\begin{pmatrix} mc \\ m\vec{v} \end{pmatrix} = mc\dot{x^\mu}}{Kontravarianter Impuls}
+\frml{F^{\mu\nu} = \begin{pmatrix} f^{00} & \cdots & f^{03} \\ \vdots & \ddots & \vdots \\ f^{30} & \cdots & f^{33} \end{pmatrix}}{Kontravarianter Tensor}
+\frml{F_{\mu\nu}}{Kovarianter Tensor}
+\frml{F_\mu^\nu}{Gemischter Tensor}
+\frml{x_\mu y^\mu = C = konst}{Skalarprodukt}
+\frml{a_\mu b^\nu = F^\nu_\mu}{Tensorprodukt}
+
+\subsection{Transformationsverhalten}
+\frml{x^{'\mu} = \Lambda_{\mu\nu}x^\nu}{L.T. eines Kontravarianten Vektors}
+\frml{x_{'\mu} = \Lambda^{\mu\nu}x_\nu}{L.T. eines Kovarianten Vektors}
+\frml{F^{'\mu\nu} = \Lambda_{\mu\alpha}\Lambda_{\nu\beta}F^{\alpha\beta}}{L.T. eines Kontravarianten Tensors}
+\frml{F^{'}_{\mu\nu} = (\Lambda^{-1})_{\mu\alpha}(\Lambda^{-1})_{\nu\beta}F_{\alpha\beta}}{L.T. eines Kovarianten Tensors}
+\frml{F^{'\nu}_\mu = (\Lambda^{-1})_{\alpha\mu}\Lambda{\nu\beta} F_\alpha^\beta}{L.T. eines Gemischten Tensors}
+\frml{a^\mu = g^{\mu\nu}a_\nu}{Transformation von ko- zu kontravariantem Vektor}
+\frml{g^{\mu\nu}g_{\nu\sigma} = g^\mu_\sigma = \mathbb{1} = \delta_\sigma^\mu}{}
+
+\subsection{Operatoren}
+\frml{dx^\mu = \begin{pmatrix} c\cdot\mathrm{d} t \\ \mathrm{d} x \\ \mathrm{d} y \\ \mathrm{d} z \end{pmatrix}}{Definition der 4er Ableitung}
+\frml{\partial_\mu = \pder{}{x_\mu} = \begin{pmatrix} \frac{1}{c} \partial t & \vec{\nabla}\end{pmatrix}}{Divergenz}
+\frml{\partial_\mu a^\mu = \partial^\mu a_\mu = frac{1}{c}\partial_t a^0+\vec{\nabla}\cdot\vec{a}}{Gradient}
+\frml{-\Box = \partial_\mu \partial^\mu = \partial^\mu \partial_\mu = \frac{1}{c^2}\pder{}{t^2}-\Delta}{d'Alembert-Operator}
+
+\frml{\left[\Box +  \left( \frac{mc}{\hbar} \right)^2\right]\Psi = 0}{Klein-Gordon Gleichung}
+
+\section{Quantenmechanik}
+\frml{i\hbar\pder{}{t}\Psi(\vec{r},t) = \oper{H}\Psi(\vec{r},t)}{Schr\"odingergleichung}
+\frml{\oper{H}\ket{\Psi} = E\ket{\Psi}}{Station\"are Schr\"odingergleichung}
+\frml{\rho(\vec{r}, t) = \left| \Psi(\vec{r}, t) \right|^2 = \Psi^*(\vec{r}, t) \cdot \Psi(\vec{r}, t)}{Wahrscheinlichkeitsdichte}
+\frml{\int_{-\infty}^{\infty}\mathbf{d}^3r \left|\Psi(\vec{r},t)\right|^2 = 1}{Erhaltug der Gesamtwahrscheinlichkeit}
+\subsection{Dirac Schreibweise}
+\frml{\braket{\Psi}{\Phi} = \int_{-\infty}^{\infty}\Psi^*\Phi \mathrm{d}x}{}
+\frml{\Psi(\vec{r}) = \sum_{n}c_{n}\psi_{n}}{Vollst\"andigkeit eines Funktionensatzes}
+\subsection{Operatoren}
+\frml{O = \bratenket{\Psi}{\oper{O}}{\Psi}}{Erwarungswert von O in $\Psi$}
+\frml{\vec{\oper{p}} = \frac{\hbar}{i}\cdot \vec{\nabla}}{Impulsoperator im Ortsraum}
+\frml{\oper{A}^\dagger = (\oper{A}^*)^T}{Definition des $\dagger$}
+\frml{\oper{A}^\dagger = \oper{A}}{Hermitischer Operator}
+Eine Physikalische Gr\"o{\ss}e wird immer durch einen Hermitischen Operator dargestellt
+
+\subsection{Kommutatoren}
+\frml{\komut{\oper{a}}{\oper{b}} = \oper{a}\oper{b} - \oper{b}\oper{a}}{Kommutator}
+\frml{\antikomut{\oper{a}}{\oper{b}} = \oper{a}\oper{b} + \oper{b}\oper{a}}{Antikommutator}
+\frml{\komut{\oper{a}\oper{b}}{\oper{c}}= \oper{a}\komut{\oper{b}}{\oper{c}}+\komut{\oper{a}}{\oper{c}}\oper{b}}{}
+\frml{\komut{\oper{a}+\oper{b}}{\oper{c}} = \komut{\oper{a}}{\oper{c}}+\komut{\oper{b}}{\oper{c}}}{}
+\frml{\komut{\oper{x}_i}{\oper{p}_i} = i\hbar}{Fundamentale Kommutatorrelation}
+Alle Kommutatoren lassen sich durch $\oper{x}$ und $\oper{p}$ darstellen.
+\subsection{Drehimpulsalgebra}
+\frml{\komut{\oper{L}_\alpha}{\oper{L}_\beta} =  i \hbar \varepsilon_{\alpha\beta\gamma}\oper{L}_\gamma}{}
+\frml{\komut{\oper{L}^2}{\oper{L}_\alpha} = 0}{}
+\frml{\oper{L}_\pm = \oper{L}_x\pm i\cdot \oper{L}_y}{Leiteroperatoren des Drehimpulses}
+\frml{\komut{\oper{L}_z}{\oper{L}_\pm} = \pm\oper{L}_\pm}{}
+\frml{\komut{\oper{L}_\pm}{\oper{L}^2}= 0}{}
+\frml{\komut{\oper{L}_+}{\oper{L}_-} = 2\hbar \oper{L}_z}{}
+\frml{\oper{L}_\pm\ket{l,m} = \hbar\sqrt{l(l+1)-m(m\pm1)}\ket{l,m\pm1}}{}
+\subsection{Drehimpulsaddition}
+\frml{\oper{J}=\oper{L}_1+\oper{L}_2}{}
+\frml{\oper{J}_z = \oper{L}_{1z} +\oper{L}_{2z}}{}
+\frml{\komut{\oper{L}_{1i}}{\oper{L}_{2k}} = 0}{Unabh\"angigkeit des Drehimpulses}
+\textbf{Entkoppelte Basis}\\
+\frml{\oper{L}_i^2\ket{l_1,m_1,l_2,m_2} = l_i(l_i+1)\hbar^2\ket{l_1,m_1,l_2,m_2}}{$i\in\{1,2\}$}
+\frml{\oper{L}_{iz}^2\ket{l_1,m_1,l_2,m_2} = m_i\hbar\ket{l_1,m_1,l_2,m_2}}{$i\in\{1,2\}$}
+\textbf{Gekoppelte Basis}\\
+\frml{\oper{J}^2\ket{j,m_j,l_1,l_2} = j(j+1)\hbar^2\ket{j,m_j,l_1,l_2}}{}
+\frml{\oper{L}_i^2\ket{j,m_j,l_1,l_2} = l_i(l_i+1)\hbar^2\ket{j,m_j,l_1,l_2}}{}
+\frml{\oper{J}_z\ket{l,m_j,l_1,l_2} = m_j\hbar\ket{j,m_j,l_1,l_2}}{}
+\textbf{Basistransformation}\\
+\frml{\sum_{m_1,m_2}\ket{l_1,m_1,l_2,m_2}\braket{j,m_j,l_1,l_2}{l_1,m_1,l_2,m_2} = \ket{j,m_j,l_1,l_2}}{}
+\textbf{Clebsh-gordon-Koeffizienten}
+\frml{C_{m_1,m_2}^{j,m_j,l_1,l_2} = \braket{j,m_j,l_1,l_2}{l_1,m_1,l_2,m_2}}{}
+\subsection{St\"orungstheorie}
+\frml{\oper{H} = \oper{H}_0 + \lambda\oper{H}_1 + \lambda^2\oper{H}_2}{Gest\"orter Hamiltonoperator}
+Der Hamilton-Operator wird in $\lambda$ entwickelt. Die Entwicklung bestimmt die Ordnung der St\"orungstheorie\\
+\textbf{Nichtentartete St\"orungstheorie}\\
+\frml{E_n^1 = \bratenket{n^0}{\oper{H}_1}{n^0}}{Energie in 1. Ordnung}
+\frml{\ket{n^1} = \sum_{m\neq n} \ket{m^0}\cdot\frac{\bratenket{n^0}{\oper{H}_1}{n^0}}{E_n^0-E_m^0}}{Wellenfkt. in 1. Ordnung}
+\frml{E_n^2 = \sum_{m \neq n} \frac{\left|\bratenket{m^0}{H_1}{n^0}\right|^2}{E_n^0 - E_m^0} = \bratenket{n^0}{H_0}{n^1}}{Energie 2. Ord.}
+\subsection{Streutheorie}
+\frml{V(\vec{r})}{Potential an dem gestreut wird}
+\frml{\varphi_{S}(\vec{r})}{Gestreute Welle}
+\frml{\varphi_{E}(\vec{r})}{Einlaufende Welle}
+\frml{\Psi_{\vec{k}}(\vec{r})}{Station\"arer Streuzustand}
+\frml{\tder{\sigma}{\Omega}(\theta , \phi) = \tder{n}{\Omega \cdot F_i}}{Differentieller Wiekungsquerschnitt}
+\frml{\sigma = \int \tder{\sigma}{\Omega} \mathrm{d}\Omega}{Totaler Wirkungsquerschnitt}
+\frml{\tder{\sigma}{\Omega} = \left|f_{\vec{k}}(\theta, \phi)\right|^2}{Diff. Wq. in Asympt. Lsg.}
+\frml{\mathrm{d}n = c\left|\vec{j}_s\right|r^2\mathrm{d}\Omega = c\cdot \frac{\hbar k}{m}\left|f_{\vec{k}}\right|^2\mathrm{d}\Omega}{Gestreute Teilchen}
+\frml{\left[ \left| \vec{k} \right|^2 + \nabla^2\right] \Psi_{\vec{k}}(\vec{r}) = \frac{2m}{\hbar^2}\cdot V(\vec{r}) \cdot \Psi_{\vec{k}}(\vec{r})}{Littmann/Schwinger~Gl.}
+\frml{\Psi_{\vec{k}}(\vec{r}) = e^{i\vec{k}\vec{r}}-\int \frac{2m}{\hbar^2}\left(\frac{1}{4\pi}\frac{e^{ik\left|\vec{r}-\vec{r}'\right|}}{\left|\vec{r}-\vec{r}'\right|}\right)\cdot V(\vec{r}')\cdot\Psi_{\vec{k}}(\vec{r}')}{Allg. Lsg.}
+\frml{\Psi_{\vec{k}}(\vec{r}) = e^{i\vec{k}\vec{r}} + f_{\vec{k}}(\theta, \phi)\frac{e^{ikr}}{r}}{Asymptotische Lsg. der LSG}
+\frml{f_{\vec{k}}(\theta, \phi) = -\frac{m}{2\pi\hbar^2}\int e^{-i\vec{k}'\vec{r}'}\cdot V(\vec{r})\cdot \Psi_{\vec{k}}(\vec{r}')\mathrm{d}\vec{r}'}{Streuamplitude}
+\frml{f_{\vec{k}}(\theta, \phi) = -\frac{m}{2\pi\hbar^2}\int e^{-i\vec{r}'(\vec{k}'-\vec{k})}\cdot V(\vec{r}')\mathrm{d}\vec{r}'}{Bornsche N\"aherung}
+\textbf{Partialwellenentwicklung} \\
+\frml{f_{\vec{k}}(\theta, \phi) = \frac{1}{k}\sum_l (2l+1)P_l(\cos(\theta))e^{i\delta_l}\sin(\delta_l)}{Streuphase}
+\subsection{Relativistische Quantenmechanik}
+\frml{p^\mu = i\hbar \partial_\mu}{Relativistischer Impulsoperator}
+\frml{\not{a} = \gamma^\mu a_\mu = \gamma_\mu a^\mu}{Definition des Feynman-Dagger}
+\frml{\overline{\Psi} = \Psi^\dagger \gamma^0}{}
+\frml{\vec{j} = c \Psi^\dagger \vec{\alpha} \Psi = c \overline{\Psi} \gamma^i \Psi}{Rel. Wahrschinlichkeitsstrom}
+\frml{1}{Klein-Gordon-Gleichung}
+\textbf{Gamma Relationen}\\
+\frml{\alpha^i = \begin{pmatrix} 0 & \sigma^i \\ \sigma^i & 0 \end{pmatrix}}{Def. $\alpha$}
+\frml{\beta = \begin{pmatrix} \mathbf{1} & 0 \\ 0 & -\mathbf{1} \end{pmatrix}}{Def. $\beta$}
+$\sigma^i$ sind die Pauli-Matrizen \\
+\frml{\left\{\alpha^i,\alpha^j\right\} = 2\delta_{i,j}}{Kommutatorrelation der $\alpha$}
+\frml{\left\{\beta, \alpha^i\right\} = 0}{}
+\frml{\beta^2 = \mathbf{1} \text{  Einheitsmatrix}}{}
+\frml{\gamma^0 = \beta}{Definition der $\gamma$}
+\frml{\gamma^i = \beta\alpha^i}{}
+\frml{\left\{\gamma^\mu,\gamma^\nu \right\} = 2g^{\mu,\nu}}{$\gamma$-Kommrel}
+\frml{\gamma^5 = i\cdot \gamma^0\gamma^1\gamma^2\gamma^3}{}
+\frml{\left\{\gamma^\mu, \gamma^5\right\} = 0}{}
+\subsection{Systeme Identischer Teilchen}
+\textbf{Def. identischer Teilchen:}\\
+Identische Teilchen stimmen in allen Eigenschaften miteinander \"uberein.\\
+\textbf{Symmetrisierungspostulat:}\\
+In einem System Identischer Teilchen sind nur bestimmte Vektoren im Zustandstaum physikalisch realisierbare Zust\"ande.\\
+\frml{\ket{U}}{Gesamtzustand}
+\frml{\ket{\Psi_S}}{Symmetrischer Zustand}
+\frml{\ket{\Psi_A}}{Antisymmetrischer Zustand}
+\frml{P_\alpha}{$\alpha$te Permutation des Systems}
+\frml{\varepsilon_\alpha = \begin{cases} 1 \text{ f\"ur gerade Permutationen} \\ -1 \text{ f\"ur ungerade Permutationen} \end{cases}}{}
+\frml{\ket{\Psi_S} = \frac{1}{\sqrt{N!}} \sum_\alpha P_\alpha \ket{U}}{}
+\frml{\ket{\Psi_A} = \frac{1}{\sqrt{N!}} \sum_\alpha \varepsilon_\alpha P_\alpha \ket{U}}{}
+
+\section{Thermodynamik}
+\subsection{Zustandsgleichungen}
+\frml{U = U(S,V); \mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V}{Innere Energie}
+\frml{F = F(T,V) = U - TS; \mathrm{d}F = -p\mathrm{d}V-S\mathrm{d}T}{Freie Energie}
+\frml{H = H(S,P) = U + PV; \mathrm{d}H = T\mathrm{d}S +P\mathrm{d}V}{Enthalpie}
+\frml{G = G(T,P) = H - TS; \mathrm{d}G = \mathrm{d}H - T\mathrm{d}S - S\mathrm{d}T}{Gibbs Energie}
+\subsection{Integrabilit\"atsbedingung}
+\subsection{Maxwell Relation}
+Die Maxwell Relationen lassen sich aus der Integrabilitaetsbedingung f\"ur implizite Differentialgleichungen ableiten.
+$U(S,V)$ ist beispiehlhaft aufgestellt:\\
+\frml{\totd{U(S,V)} = T\totd{S} - P\totd{V} = \pderc{U}{S}{V}\totd{S} + \pderc{U}{V}{S}\totd{V}}{}
+\frml{\pderc{T}{V}{S} = \left(\pder{}{V}\pderc{U}{S}{V}\right)_S = \left(\pder{}{S}\pderc{U}{V}{S}\right)_V = -\pderc{P}{S}{V}}{}
+\end{multicols}
+\end{document}
