@@ -230,12 +230,12 @@ Bei korrelierten gr\"ossen, muss der Einfluss der Fehler aufeinander ber\"ucksic
 \frml{F^{'}_{\mu\nu} = (\Lambda^{-1})_{\mu\alpha}(\Lambda^{-1})_{\nu\beta}F_{\alpha\beta}}{L.T. eines Kovarianten Tensors}
 \frml{F^{'\nu}_\mu = (\Lambda^{-1})_{\alpha\mu}\Lambda{\nu\beta} F_\alpha^\beta}{L.T. eines Gemischten Tensors}
 \frml{a^\mu = g^{\mu\nu}a_\nu}{Transformation von ko- zu kontravariantem Vektor}
-\frml{g^{\mu\nu}g_{\nu\sigma} = g^\mu_\sigma = \mathbb{1} = \delta_\sigma^\mu}{}
+\frml{g^{\mu\nu}g_{\nu\sigma} = g^\mu_\sigma = \mathbf{1} = \delta_\sigma^\mu}{}
 
 \subsection{Operatoren}
 \frml{dx^\mu = \begin{pmatrix} c\cdot\mathrm{d} t \\ \mathrm{d} x \\ \mathrm{d} y \\ \mathrm{d} z \end{pmatrix}}{Definition der 4er Ableitung}
-\frml{\partial_\mu = \pder{}{x_\mu} = \begin{pmatrix} \frac{1}{c} \partial t & \vec{\nabla}\end{pmatrix}}{Divergenz}
-\frml{\partial_\mu a^\mu = \partial^\mu a_\mu = frac{1}{c}\partial_t a^0+\vec{\nabla}\cdot\vec{a}}{Gradient}
+\frml{\partial_\mu = \pder{}{x^\mu} = \begin{pmatrix} \frac{1}{c} \partial t & \vec{\nabla}\end{pmatrix}}{Divergenz}
+\frml{\partial_\mu a^\mu = \partial^\mu a_\mu = \frac{1}{c}\partial_t a^0+\vec{\nabla}\cdot\vec{a}}{Gradient}
 \frml{-\Box = \partial_\mu \partial^\mu = \partial^\mu \partial_\mu = \frac{1}{c^2}\pder{}{t^2}-\Delta}{d'Alembert-Operator}
 
 \frml{\left[\Box +  \left( \frac{mc}{\hbar} \right)^2\right]\Psi = 0}{Klein-Gordon Gleichung}
@@ -245,16 +245,17 @@ Bei korrelierten gr\"ossen, muss der Einfluss der Fehler aufeinander ber\"ucksic
 \frml{\oper{H}\ket{\Psi} = E\ket{\Psi}}{Station\"are Schr\"odingergleichung}
 \frml{\rho(\vec{r}, t) = \left| \Psi(\vec{r}, t) \right|^2 = \Psi^*(\vec{r}, t) \cdot \Psi(\vec{r}, t)}{Wahrscheinlichkeitsdichte}
 \frml{\int_{-\infty}^{\infty}\mathbf{d}^3r \left|\Psi(\vec{r},t)\right|^2 = 1}{Erhaltug der Gesamtwahrscheinlichkeit}
+\frml{\ket{\Psi(\vec{r}, t)} = e^{-i\oper{H}t/\hbar}\ket{\Psi(\vec{r}, 0)} = \sum_n \ket{n} e^{iE_nt/\hbar}\braket{n}{\Psi(\vec{r}, 0)}}{Zeitentwicklung}
 \subsection{Dirac Schreibweise}
 \frml{\braket{\Psi}{\Phi} = \int_{-\infty}^{\infty}\Psi^*\Phi \mathrm{d}x}{}
-\frml{\Psi(\vec{r}) = \sum_{n}c_{n}\psi_{n}}{Vollst\"andigkeit eines Funktionensatzes}
+\frml{\Psi(\vec{r}, t) = \sum_{n}c_{n}\psi_{n}}{Vollst\"andigkeit eines Funktionensatzes}
+\frml{\braket{\psi_n}{\psi_m} = \delta_{n,m}}{Orthogonalit\"at der Zust\"ande}
 \subsection{Operatoren}
 \frml{O = \bratenket{\Psi}{\oper{O}}{\Psi}}{Erwarungswert von O in $\Psi$}
 \frml{\vec{\oper{p}} = \frac{\hbar}{i}\cdot \vec{\nabla}}{Impulsoperator im Ortsraum}
 \frml{\oper{A}^\dagger = (\oper{A}^*)^T}{Definition des $\dagger$}
 \frml{\oper{A}^\dagger = \oper{A}}{Hermitischer Operator}
 Eine Physikalische Gr\"o{\ss}e wird immer durch einen Hermitischen Operator dargestellt
-
 \subsection{Kommutatoren}
 \frml{\komut{\oper{a}}{\oper{b}} = \oper{a}\oper{b} - \oper{b}\oper{a}}{Kommutator}
 \frml{\antikomut{\oper{a}}{\oper{b}} = \oper{a}\oper{b} + \oper{b}\oper{a}}{Antikommutator}
@@ -274,9 +275,10 @@ Alle Kommutatoren lassen sich durch $\oper{x}$ und $\oper{p}$ darstellen.
 \frml{\oper{J}=\oper{L}_1+\oper{L}_2}{}
 \frml{\oper{J}_z = \oper{L}_{1z} +\oper{L}_{2z}}{}
 \frml{\komut{\oper{L}_{1i}}{\oper{L}_{2k}} = 0}{Unabh\"angigkeit des Drehimpulses}
+\frml{\oper{J}^2 = \oper{L}_1^2 + \oper{L}_2^2+2\oper{L}_1\cdot \oper{L}_2}{Umwandlung des Drehimpulses}
 \textbf{Entkoppelte Basis}\\
 \frml{\oper{L}_i^2\ket{l_1,m_1,l_2,m_2} = l_i(l_i+1)\hbar^2\ket{l_1,m_1,l_2,m_2}}{$i\in\{1,2\}$}
-\frml{\oper{L}_{iz}^2\ket{l_1,m_1,l_2,m_2} = m_i\hbar\ket{l_1,m_1,l_2,m_2}}{$i\in\{1,2\}$}
+\frml{\oper{L}_{iz}\ket{l_1,m_1,l_2,m_2} = m_i\hbar\ket{l_1,m_1,l_2,m_2}}{$i\in\{1,2\}$}
 \textbf{Gekoppelte Basis}\\
 \frml{\oper{J}^2\ket{j,m_j,l_1,l_2} = j(j+1)\hbar^2\ket{j,m_j,l_1,l_2}}{}
 \frml{\oper{L}_i^2\ket{j,m_j,l_1,l_2} = l_i(l_i+1)\hbar^2\ket{j,m_j,l_1,l_2}}{}
@@ -285,13 +287,31 @@ Alle Kommutatoren lassen sich durch $\oper{x}$ und $\oper{p}$ darstellen.
 \frml{\sum_{m_1,m_2}\ket{l_1,m_1,l_2,m_2}\braket{j,m_j,l_1,l_2}{l_1,m_1,l_2,m_2} = \ket{j,m_j,l_1,l_2}}{}
 \textbf{Clebsh-gordon-Koeffizienten}
 \frml{C_{m_1,m_2}^{j,m_j,l_1,l_2} = \braket{j,m_j,l_1,l_2}{l_1,m_1,l_2,m_2}}{}
+Um die CG-Koeffizienten auszurechnen, wendet man auf den Obersten Zustand in beiden Basen den Absteigeoperator an
+bis alle zust\"ande f\"ur die J-te Quantenzahl bestimmt sind.\\
+\textbf{Der Spin}\\
+\frml{\sigma_i}{Pauli Matrizen}
+\frml{\sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}}{$\sigma_x$}
+\frml{\sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}}{$\sigma_y$}
+\frml{\sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}}{$\sigma_z$}
+\frml{\oper{S} = \frac{\hbar}{2}\vec{\sigma}}{Definition des Spins}
 \subsection{St\"orungstheorie}
 \frml{\oper{H} = \oper{H}_0 + \lambda\oper{H}_1 + \lambda^2\oper{H}_2}{Gest\"orter Hamiltonoperator}
 Der Hamilton-Operator wird in $\lambda$ entwickelt. Die Entwicklung bestimmt die Ordnung der St\"orungstheorie\\
 \textbf{Nichtentartete St\"orungstheorie}\\
 \frml{E_n^1 = \bratenket{n^0}{\oper{H}_1}{n^0}}{Energie in 1. Ordnung}
 \frml{\ket{n^1} = \sum_{m\neq n} \ket{m^0}\cdot\frac{\bratenket{n^0}{\oper{H}_1}{n^0}}{E_n^0-E_m^0}}{Wellenfkt. in 1. Ordnung}
-\frml{E_n^2 = \sum_{m \neq n} \frac{\left|\bratenket{m^0}{H_1}{n^0}\right|^2}{E_n^0 - E_m^0} = \bratenket{n^0}{H_0}{n^1}}{Energie 2. Ord.}
+\frml{E_n^2 = \sum_{m \neq n} \frac{\left|\bratenket{m^0}{H_1}{n^0}\right|^2}{E_n^0 - E_m^0} = \bratenket{n^0}{H_1}{n^1}}{Energie 2. Ord.}
+\textbf{Zeitabh\"angige St\"orungstheorie}\\
+\frml{H =H_0 + V(t)}{Annahme \"uber die Form des Hamiltonoperators}
+\frml{\ket{\Psi(t)}_S}{Wellenfkt. im Schr\"odingerbild}
+\frml{U^\dagger\ket{\Psi(t)}}{Unit\"are Transformation der WFkt.}
+\frml{\ket{\Psi(t)}_H = e^{i\oper{H}t/\hbar}\ket{\Psi}}{WFkt. im Heisenbergbild}
+\frml{\ket{\Psi(t)}_I = e^{i\oper{H}_0t\hbar}\ket{\Psi(t)}}{WFkt. im Wechselwirkungsbild}
+\frml{V(t)_I = U^\dagger V(t)_s U = e^{i\oper{H}_0t/\hbar}V(t)_se^{-i\oper{H}_0t/\hbar}}{Potential WW-Bild}
+\frml{i\hbar\pder{}{t}\ket{\Psi(t)}_I = V(t)_I\ket{\Psi(t)}_I}{Schr\"odinger-Gl. im WW-Bild}
+\frml{\ket{\Psi(t)}_I = \ket{\Psi(t_0)}_I + \frac{1}{i\hbar}\int_{t_0}^tV(t')_I\ket{\Psi(t')}_I\mathrm{d}t'}{N\"aherung f\"ur $\Psi$}
+In der ersten Iteration setzt man als Startwert $\ket{\Psi(t_0)}_I$ ein.\\
 \subsection{Streutheorie}
 \frml{V(\vec{r})}{Potential an dem gestreut wird}
 \frml{\varphi_{S}(\vec{r})}{Gestreute Welle}
@@ -309,12 +329,8 @@ Der Hamilton-Operator wird in $\lambda$ entwickelt. Die Entwicklung bestimmt die
 \textbf{Partialwellenentwicklung} \\
 \frml{f_{\vec{k}}(\theta, \phi) = \frac{1}{k}\sum_l (2l+1)P_l(\cos(\theta))e^{i\delta_l}\sin(\delta_l)}{Streuphase}
 \subsection{Relativistische Quantenmechanik}
+\textbf{Definitionen}\\
 \frml{p^\mu = i\hbar \partial_\mu}{Relativistischer Impulsoperator}
-\frml{\not{a} = \gamma^\mu a_\mu = \gamma_\mu a^\mu}{Definition des Feynman-Dagger}
-\frml{\overline{\Psi} = \Psi^\dagger \gamma^0}{}
-\frml{\vec{j} = c \Psi^\dagger \vec{\alpha} \Psi = c \overline{\Psi} \gamma^i \Psi}{Rel. Wahrschinlichkeitsstrom}
-\frml{1}{Klein-Gordon-Gleichung}
-\textbf{Gamma Relationen}\\
 \frml{\alpha^i = \begin{pmatrix} 0 & \sigma^i \\ \sigma^i & 0 \end{pmatrix}}{Def. $\alpha$}
 \frml{\beta = \begin{pmatrix} \mathbf{1} & 0 \\ 0 & -\mathbf{1} \end{pmatrix}}{Def. $\beta$}
 $\sigma^i$ sind die Pauli-Matrizen \\
@@ -323,9 +339,17 @@ $\sigma^i$ sind die Pauli-Matrizen \\
 \frml{\beta^2 = \mathbf{1} \text{  Einheitsmatrix}}{}
 \frml{\gamma^0 = \beta}{Definition der $\gamma$}
 \frml{\gamma^i = \beta\alpha^i}{}
+\frml{(\gamma^i)^\dagger = -\gamma^i}{}
 \frml{\left\{\gamma^\mu,\gamma^\nu \right\} = 2g^{\mu,\nu}}{$\gamma$-Kommrel}
+\frml{\gamma_\mu = g_{\mu\nu}\gamma^\nu}{}
 \frml{\gamma^5 = i\cdot \gamma^0\gamma^1\gamma^2\gamma^3}{}
 \frml{\left\{\gamma^\mu, \gamma^5\right\} = 0}{}
+\frml{\not{a} = \gamma^\mu a_\mu = \gamma_\mu a^\mu}{Definition des Feynman-Dagger}
+\frml{\overline{\Psi} = \Psi^\dagger \gamma^0}{}
+\textbf{Gleichungen}\\
+\frml{\vec{j} = c \Psi^\dagger \vec{\alpha} \Psi = c \overline{\Psi} \gamma^i \Psi}{Rel. Wahrschinlichkeitsstrom}
+\frml{i\hbar\left[ 1/c \cdot \partial_t + \vec{\alpha}\vec{\nabla}\right] \Psi(x^\mu) - mc\Psi(x^\mu) = 0}{Dirac Gleichung}
+\frml{\left[i\hbar \gamma^\mu \partial_\mu -mc\right]\Psi(x^\mu)=0}{Kovariante Schreibweise der Dirac Gl.}
 \subsection{Systeme Identischer Teilchen}
 \textbf{Def. identischer Teilchen:}\\
 Identische Teilchen stimmen in allen Eigenschaften miteinander \"uberein.\\
