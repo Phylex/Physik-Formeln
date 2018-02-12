@@ -295,6 +295,8 @@ bis alle zust\"ande f\"ur die J-te Quantenzahl bestimmt sind.\\
 \frml{\sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}}{$\sigma_y$}
 \frml{\sigma_3 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}}{$\sigma_z$}
 \frml{\oper{S} = \frac{\hbar}{2}\vec{\sigma}}{Definition des Spins}
+\frml{\left[\sigma_i,\sigma_j\right] = 2i \varepsilon_{ijk}\sigma_k}{}
+\frml{\left\{\sigma_i,\sigma_j\right\} = 2\delta_{ij} \mathbb{I}}{}
 \subsection{St\"orungstheorie}
 \frml{\oper{H} = \oper{H}_0 + \lambda\oper{H}_1 + \lambda^2\oper{H}_2}{Gest\"orter Hamiltonoperator}
 Der Hamilton-Operator wird in $\lambda$ entwickelt. Die Entwicklung bestimmt die Ordnung der St\"orungstheorie\\
@@ -312,6 +314,13 @@ Der Hamilton-Operator wird in $\lambda$ entwickelt. Die Entwicklung bestimmt die
 \frml{i\hbar\pder{}{t}\ket{\Psi(t)}_I = V(t)_I\ket{\Psi(t)}_I}{Schr\"odinger-Gl. im WW-Bild}
 \frml{\ket{\Psi(t)}_I = \ket{\Psi(t_0)}_I + \frac{1}{i\hbar}\int_{t_0}^tV(t')_I\ket{\Psi(t')}_I\mathrm{d}t'}{N\"aherung f\"ur $\Psi$}
 In der ersten Iteration setzt man als Startwert $\ket{\Psi(t_0)}_I$ ein.\\
+\textbf{Fermis Goldene Regel}
+\frml{\Gamma_{m\to n} = \frac{P_{m\to n}(t)}{t} = \frac{2\pi}{\hbar}\delta(E_n-E_m)\left|\bratenket{m}{\oper{V}}{n}\right|^2}{\"Ubergangsrate}
+\frml{R_t = \int \mathrm{d}N_n \Gamma_{m\to n} = \int \mathrm{d}E_n \tder{N_n}{E_n}\frac{2\pi}{\hbar}\delta(E_n-E_m)\left|\bratenket{m}{\oper{V}}{n}\right|^2}{Totale Rate}
+\frml{\tder{N_n}{E_n} = \rho(E)}{Zustandsdichte}
+\frml{V(t) = \Theta(t)\left[\oper{F}e^{-i\omega t}+\oper{F}^\dagger e^{i\omega t}\right]}{Form von Periodischer St\"orung}
+\frml{\Gamma_{m\to\ n} = \frac{2\pi}{\hbar}\left[\delta(E_n-E_m-\hbar\omega)\left|\bratenket{m}{\oper{F}}{n}\right|^2\right]}{Goldene Regel}
+\frml{\qquad + \frac{2\pi}{\hbar}\left[\delta(E_n-E_m+\hbar\omega)\left|\bratenket{m}{\oper{F}^\dagger}{n}\right|^2\right]}{Periodische St\"or.}
 \subsection{Streutheorie}
 \frml{V(\vec{r})}{Potential an dem gestreut wird}
 \frml{\varphi_{S}(\vec{r})}{Gestreute Welle}
@@ -339,17 +348,31 @@ $\sigma^i$ sind die Pauli-Matrizen \\
 \frml{\beta^2 = \mathbf{1} \text{  Einheitsmatrix}}{}
 \frml{\gamma^0 = \beta}{Definition der $\gamma$}
 \frml{\gamma^i = \beta\alpha^i}{}
+\frml{(\gamma^i)^2 = -\mathbf{1}}{}
 \frml{(\gamma^i)^\dagger = -\gamma^i}{}
-\frml{\left\{\gamma^\mu,\gamma^\nu \right\} = 2g^{\mu,\nu}}{$\gamma$-Kommrel}
+\frml{(\gamma^\mu)^\dagger = \gamma^0\gamma^\mu\gamma^0}{}
+\frml{(\gamma_\mu)^\dagger = \gamma_0\gamma_\mu\gamma_0}{}
+\frml{\left\{\gamma^\mu,\gamma^\nu \right\} = 2g^{\mu\nu}}{$\gamma$-Antikommutatorrelation}
 \frml{\gamma_\mu = g_{\mu\nu}\gamma^\nu}{}
-\frml{\gamma^5 = i\cdot \gamma^0\gamma^1\gamma^2\gamma^3}{}
+\frml{\gamma^5 = i\cdot \gamma^0\gamma^1\gamma^2\gamma^3}{$\gamma^5$ Definition}
+\frml{(\gamma^5)^2 = \mathbf{1}}{}
+\frml{(\gamma^5)^\dagger = \gamma^5}{}
 \frml{\left\{\gamma^\mu, \gamma^5\right\} = 0}{}
 \frml{\not{a} = \gamma^\mu a_\mu = \gamma_\mu a^\mu}{Definition des Feynman-Dagger}
+\frml{\sigma_{\mu\nu} = \frac{i}{2}\left[\gamma_\mu, \gamma_\nu\right]}{}
 \frml{\overline{\Psi} = \Psi^\dagger \gamma^0}{}
+\textbf{Spuren}\\
+\frml{\mathrm{Tr}\left( \gamma^\mu\right) = 0}{}
+\frml{\mathrm{Tr}\left( \gamma^\mu\gamma^\nu\right) = 4g^{\mu\nu}}{}
+\frml{\mathrm{Tr}\left(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\right) = 4\left(g^{\mu\nu}g^{\rho\sigma}-g^{\mu\rho}g^{\nu\sigma}+g^{\mu\sigma}g^{\nu\rho}\right)}{}
 \textbf{Gleichungen}\\
 \frml{\vec{j} = c \Psi^\dagger \vec{\alpha} \Psi = c \overline{\Psi} \gamma^i \Psi}{Rel. Wahrschinlichkeitsstrom}
 \frml{i\hbar\left[ 1/c \cdot \partial_t + \vec{\alpha}\vec{\nabla}\right] \Psi(x^\mu) - mc\Psi(x^\mu) = 0}{Dirac Gleichung}
 \frml{\left[i\hbar \gamma^\mu \partial_\mu -mc\right]\Psi(x^\mu)=0}{Kovariante Schreibweise der Dirac Gl.}
+\textbf{Spinorrelationen}\\
+\frml{\overline{u}(p) = u^\dagger(p)\gamma_0 = \gamma_0u^\dagger(p)}{}
+\frml{\sum_s u(p)_\alpha \overline{u}(p)_\beta = \left(\frac{\not{p}+m}{2m}\right)_{\alpha\beta}}{}
+\frml{\sum_s v(p)_\alpha \overline{v}(p)_\beta = \left(\frac{\not{p}-m}{2m}\right)_{\alpha\beta}}{}
 \subsection{Systeme Identischer Teilchen}
 \textbf{Def. identischer Teilchen:}\\
 Identische Teilchen stimmen in allen Eigenschaften miteinander \"uberein.\\
