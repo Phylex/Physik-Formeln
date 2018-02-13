@@ -51,6 +51,8 @@
 \newcommand{\numb}{n^{\vphantom{\dagger}}}            % number operator
 \newcommand{\stat}[1]{\mathrm{#1}}
 \newcommand{\statvar}[1]{\mathbf{#1}}
+\newcommand{\LT}[2]{\Lambda^{#1}_{\;\;#2}}
+\newcommand{\ILT}[2]{(\Lambda^{-1})^{#1}_{\;\;#2}}
 %##############################################################################
 
 \begin{document}
@@ -214,21 +216,22 @@ Bei korrelierten gr\"ossen, muss der Einfluss der Fehler aufeinander ber\"ucksic
 \section{Relativistik}
 \subsection{Schreibweise}
 \frml{x^\mu = \begin{pmatrix} x^0 \\ x^1 \\ x^2 \\ x^3 \end{pmatrix} = \begin{pmatrix} ct \\ x \\ y \\ z \end{pmatrix}}{Kontravarianter Vektor}
-\frml{g_{\mu \nu} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}}{Metrischer Tensor}
 \frml{x_\mu = g_{\mu\nu} x^\nu = \begin{pmatrix} ct & -x & -y & -z \end{pmatrix}}{Kovarianter Vektor}
-\frml{p^\mu = \frac{1}{\sqrt{1-(v^2/c^2)}}\begin{pmatrix} mc \\ m\vec{v} \end{pmatrix} = mc\dot{x^\mu}}{Kontravarianter Impuls}
 \frml{F^{\mu\nu} = \begin{pmatrix} f^{00} & \cdots & f^{03} \\ \vdots & \ddots & \vdots \\ f^{30} & \cdots & f^{33} \end{pmatrix}}{Kontravarianter Tensor}
 \frml{F_{\mu\nu}}{Kovarianter Tensor}
 \frml{F_\mu^\nu}{Gemischter Tensor}
 \frml{x_\mu y^\mu = C = konst}{Skalarprodukt}
 \frml{a_\mu b^\nu = F^\nu_\mu}{Tensorprodukt}
+\frml{g_{\mu \nu} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}}{Metrischer Tensor}
+\frml{y^\mu x^\nu = y^\mu g_{\mu\nu} x^\nu}{Definition des Skalarprodukts mit Met.Tensor}
+\frml{p^\mu = \frac{1}{\sqrt{1-(v^2/c^2)}}\begin{pmatrix} mc \\ m\vec{v} \end{pmatrix} = mc\dot{x^\mu}}{Kontravarianter Impuls}
 
 \subsection{Transformationsverhalten}
-\frml{x^{'\mu} = \Lambda_{\mu\nu}x^\nu}{L.T. eines Kontravarianten Vektors}
-\frml{x_{'\mu} = \Lambda^{\mu\nu}x_\nu}{L.T. eines Kovarianten Vektors}
-\frml{F^{'\mu\nu} = \Lambda_{\mu\alpha}\Lambda_{\nu\beta}F^{\alpha\beta}}{L.T. eines Kontravarianten Tensors}
-\frml{F^{'}_{\mu\nu} = (\Lambda^{-1})_{\mu\alpha}(\Lambda^{-1})_{\nu\beta}F_{\alpha\beta}}{L.T. eines Kovarianten Tensors}
-\frml{F^{'\nu}_\mu = (\Lambda^{-1})_{\alpha\mu}\Lambda{\nu\beta} F_\alpha^\beta}{L.T. eines Gemischten Tensors}
+\frml{x^{\mu'} = \LT{\mu}{\nu}x^\nu}{L.T. eines Kontravarianten Vektors}
+\frml{x_{\mu}' = \ILT{\nu}{\mu}x_\nu}{L.T. eines Kovarianten Vektors}
+\frml{F^{'\mu\nu} = \LT{\mu}{\alpha}\LT{\nu}{\beta}F^{\alpha\beta}}{L.T. eines Kontravarianten Tensors}
+\frml{F^{'}_{\mu\nu} = \ILT{\alpha}{\mu}\ILT{\beta}{\nu}F_{\alpha\beta}}{L.T. eines Kovarianten Tensors}
+\frml{F^{'\nu}_\mu = \ILT{\alpha}{\mu}\LT{\nu}{\beta} F_\alpha^\beta}{L.T. eines Gemischten Tensors}
 \frml{a^\mu = g^{\mu\nu}a_\nu}{Transformation von ko- zu kontravariantem Vektor}
 \frml{g^{\mu\nu}g_{\nu\sigma} = g^\mu_\sigma = \mathbf{1} = \delta_\sigma^\mu}{}
 
@@ -352,7 +355,7 @@ $\sigma^i$ sind die Pauli-Matrizen \\
 \frml{(\gamma^i)^\dagger = -\gamma^i}{}
 \frml{(\gamma^\mu)^\dagger = \gamma^0\gamma^\mu\gamma^0}{}
 \frml{(\gamma_\mu)^\dagger = \gamma_0\gamma_\mu\gamma_0}{}
-\frml{\left\{\gamma^\mu,\gamma^\nu \right\} = 2g^{\mu\nu}}{$\gamma$-Antikommutatorrelation}
+\frml{\left\{\gamma^\mu,\gamma^\nu \right\} = 2g^{\mu\nu}\mathbb{I}}{$\gamma$-Antikommutatorrelation}
 \frml{\gamma_\mu = g_{\mu\nu}\gamma^\nu}{}
 \frml{\gamma^5 = i\cdot \gamma^0\gamma^1\gamma^2\gamma^3}{$\gamma^5$ Definition}
 \frml{(\gamma^5)^2 = \mathbf{1}}{}
